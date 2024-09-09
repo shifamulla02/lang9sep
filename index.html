@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<title>lang app by shifa</title>
+		<style>
+			*{font-size:40px; font-family:Times New Roman;}
+			body{background-color:linen;}
+			input[type=checkbox] {width:3%;height:0.5em;}
+		</style>
+	</head>
+
+
+	<body>
+		<center>
+			<h1> ~ LANGUAGE APP ~ </h1>
+			<form onsubmit="check()">
+				<input type="text"	id="name"	placeholder="enter your name" />
+				<br/><br/>
+				<input type="checkbox"	name="f" 	id="c" /> C++
+				<input type="checkbox"	name="f" 	id="j" /> Java
+				<input type="checkbox"	name="f" 	id="p" /> Python
+				<br/><br/>
+				<input type="submit" />
+			</form>
+
+			<h2 id="msg"/>
+
+			<script>
+				function check()
+				{
+					event.preventDefault();
+					let name= document.getElementById("name");
+					let c= document.getElementById("c");
+					let java= document.getElementById("j");
+					let py= document.getElementById("p");
+					let msg= document.getElementById("msg");
+
+					let n=name.value;
+
+					if(n.trim()==="")
+					{
+						alert("please enter your name!");
+						msg.innerHTML="";
+						name.focus();
+						return;
+					}
+					
+					if(!n.match("^[A-Za-z ]+$"))
+					{
+						alert("only alphabets allowed!");
+						msg.innerHTML="";
+						name.focus();
+						return;
+					}
+
+					let language="";
+					if (c.checked) 
+						language= language + " C++";
+					if (java.checked) 
+						language= language + " Java";
+					if (py.checked) 
+						language= language + " Python";
+
+					msg.innerHTML= "Your name is " + n + " and you know " +language;
+					
+					if(language==="")
+						msg.innerHTML= "Your name is " + n + " and you know none of the languages.";	
+				}			
+			</script>
+		</center>
+	</body>
+</html>
